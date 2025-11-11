@@ -16930,7 +16930,7 @@ function flattenModule(module, name) {
 }
 
 const remotesMap = {
-'chat_app':{url:'https://framerage.github.io/rts_wss_chat/assets/chatEntry.js',format:'esm',from:'vite'}
+'chat_app':{url:'https://framerage.github.io/rts_chat/assets/chatEntry.js',format:'esm',from:'vite'}
 };
                 const currentImports = {};
 
