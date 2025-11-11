@@ -22,9 +22,9 @@ export default defineConfig({
     minify: false,
     cssCodeSplit: false,
   },
-  base: "/",
+  base: "/rts_vite_mf_prehost",
   server: {
-    open: "/",
+    open: "/rts_vite_mf_prehost",
     port: 3000,
     cors: false,
   },
