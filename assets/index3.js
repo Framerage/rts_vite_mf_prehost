@@ -1,4 +1,4 @@
-import { r as requireReact } from './index-vKYCWKHQ.js';
+import { r as requireReact } from './index2.js';
 
 var reactDom = {exports: {}};
 

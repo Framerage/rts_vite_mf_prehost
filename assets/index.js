@@ -1,5 +1,5 @@
-import { r as requireReact } from './index-vKYCWKHQ.js';
-import { r as requireReactDom } from './index-B3n7t_Dm.js';
+import { r as requireReact } from './index2.js';
+import { r as requireReactDom } from './index3.js';
 
 var jsxRuntime = {exports: {}};
 
@@ -16863,7 +16863,7 @@ function satisfy(version, range) {
 const currentImports$1 = {};
 
 // eslint-disable-next-line no-undef
-const moduleMap = {'react':{get:()=>()=>__federation_import$1(new URL('__federation_shared_react-BcUgTuUO.js', import.meta.url).href),import:true},'react-dom':{get:()=>()=>__federation_import$1(new URL('__federation_shared_react-dom-BPiK34Ci.js', import.meta.url).href),import:true}};
+const moduleMap = {'react':{get:()=>()=>__federation_import$1(new URL('__federation_shared_react.js', import.meta.url).href),import:true},'react-dom':{get:()=>()=>__federation_import$1(new URL('__federation_shared_react-dom.js', import.meta.url).href),import:true}};
 const moduleCache = Object.create(null);
 async function importShared(name, shareScope = 'default') {
   return moduleCache[name]
@@ -16952,7 +16952,7 @@ const remotesMap = {
 
                 const wrapShareModule = remoteFrom => {
                   return merge({
-                    'react':{'19.2.0':{get:()=>get(new URL('__federation_shared_react-BcUgTuUO.js', import.meta.url).href), loaded:1}},'react-dom':{'19.2.0':{get:()=>get(new URL('__federation_shared_react-dom-BPiK34Ci.js', import.meta.url).href), loaded:1}}
+                    'react':{'19.2.0':{get:()=>get(new URL('__federation_shared_react.js', import.meta.url).href), loaded:1}},'react-dom':{'19.2.0':{get:()=>get(new URL('__federation_shared_react-dom.js', import.meta.url).href), loaded:1}}
                   }, (globalThis.__federation_shared__ || {})['default'] || {});
                 };
 
