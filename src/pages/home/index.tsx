@@ -1,9 +1,9 @@
-import React, { Suspense } from "react";
+import React, {Suspense} from "react";
 import styles from "./homepage.module.css";
 
 const WssChat = React.lazy(() => import("chat_app/Chat"));
 
-export const Home = () => {
+const Home = () => {
   return (
     <section className={styles.sectionField}>
       <h2 className={styles.textStyle}>This the home vite prehost</h2>
@@ -23,3 +23,4 @@ export const Home = () => {
     </section>
   );
 };
+export default Home;

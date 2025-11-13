@@ -3,5 +3,29 @@
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ]
+  ],
+  // "include": ["src", "**/*.ts", "**/*.tsx", "src", "src/types","src/@types"],
+    "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "baseUrl": "src",
+  "paths": {
+    "assets/*": ["assets/*"],
+    "api/*": ["api/*"],
+    "components/*": ["components/*"],
+    "constants/*": ["constants/*"],
+    "hooks/*": ["hooks/*"],
+    "helpers/*": ["helpers/*"],
+    "modules/*": ["modules/*"],
+    "pages/*": ["pages/*"],
+    "store/*": ["store/*"],
+    "types/*": ["types/*"],
+    "typings/*": ["typings/*"],
+    "styles/*": ["styles/*"],
+    "utils/*": ["utils/*"],
+  },
+    }
 }

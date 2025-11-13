@@ -1,7 +1,7 @@
 {
   "name": "rts_vite_mf_prehost",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "homepage": "https://framerage.github.io/rts_vite_mf_prehost",
   "engines": {
@@ -18,7 +18,8 @@
   },
   "dependencies": {
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.9.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",

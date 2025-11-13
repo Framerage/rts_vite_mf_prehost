@@ -1,10 +1,10 @@
-import { AppWrapper } from "./components/AppWrapper";
-import { Home } from "./pages/home";
+import {BrowserRouter} from "react-router-dom";
+import {AppLayout} from "components/appLayout";
 
 export const App = () => {
   return (
-    <AppWrapper>
-      <Home />
-    </AppWrapper>
+    <BrowserRouter>
+      <AppLayout />
+    </BrowserRouter>
   );
 };

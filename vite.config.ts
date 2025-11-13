@@ -16,6 +16,24 @@ export default defineConfig({
     }),
   ],
 
+    resolve: {
+      //temp comment before architecture of project 
+    alias: {
+    //   assets: "/src/assets",
+    //   api: "/src/api",
+      components: "/src/components",
+    //   hooks: "/src/hooks",
+    //   helpers: "/src/helpers",
+    //   modules: "/src/modules",
+      pages: "/src/pages",
+    //   styles: "/src/styles",
+    //   store: "/src/store",
+    //   types: "/src/types",
+    //   typings: "/src/typings",
+      utils: "/src/utils",
+    //   constants: "/src/constants",
+    },
+  },
   build: {
     rollupOptions: {
       output: {
