@@ -10,8 +10,8 @@ export default defineConfig({
       name: "prehost_app",
       shared: ["react", "react-dom"],
       remotes: {
-        // chat_app: "http://localhost:5001/rts_wss_chat/assets/chatEntry.js",
-        chat_app: "https://framerage.github.io/rts_chat/assets/chatEntry.js",
+        // chat_app: "http://localhost:5001/rts_wss_chat/assets/chatEntry.js", //preview
+        chat_app: "https://framerage.github.io/rts_chat/assets/chatEntry.js", //github repository
       },
     }),
   ],
