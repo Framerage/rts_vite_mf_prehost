@@ -14,11 +14,13 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist",
-    "predeploy": "npm run build"
+    "predeploy": "npm run build",
+    "check-types": "tsc --noEmit --pretty"
   },
   "dependencies": {
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-hook-form": "^7.66.0",
     "react-router-dom": "^7.9.5"
   },
   "devDependencies": {

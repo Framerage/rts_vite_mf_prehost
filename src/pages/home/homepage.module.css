@@ -2,7 +2,7 @@
   border: 1px solid grey;
   min-width: 100px;
   max-width: 800px;
-  margin: 50px auto;
+  margin: 50px 4px;
   box-shadow: 0 0 5px grey;
   border-radius: 4px;
 }
@@ -18,7 +18,6 @@
   font-size: 14px;
   margin: 8px;
   padding: 4px;
-  border: 1px solid red;
   ul {
     list-style: none;
     display: flex;

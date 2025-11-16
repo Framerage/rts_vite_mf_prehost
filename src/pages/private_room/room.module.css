@@ -1,0 +1,11 @@
+.roomWrapper{
+    display: flex;
+    height: 100%;
+    .roomContent{
+        font-size: 18px;
+        flex-grow: 2;
+        padding: 8px;
+        text-align: center;
+        align-content: center;
+    }
+}

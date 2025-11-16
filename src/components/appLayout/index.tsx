@@ -4,6 +4,8 @@ import HomePage from "pages/home";
 import ErrorPage from "pages/error";
 import {homePath} from "utils/routeConfig";
 import type {ReactElement} from "react";
+import {LoginPage} from "pages/login";
+import {PrivateRoom} from "pages/private_room";
 
 const ROUTES: {
   [key: string]: {
@@ -18,8 +20,8 @@ const ROUTES: {
     index: true,
   },
   //   rooms: {link: `${homePath}/catalog`, component: Catalog},
-
-  //   login: {link: `${homePath}/auth/login`, component: LoginPage},
+  private_room: {link: `${homePath}/room/:id`, component: PrivateRoom},
+  login: {link: `${homePath}/login`, component: LoginPage},
   error: {link: "*", component: ErrorPage},
 };
 //TODO: разделение саспенсов для отображения загрузки компонента и отдельно микрофронта

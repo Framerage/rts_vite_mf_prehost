@@ -1,7 +1,4 @@
-import React, {Suspense} from "react";
 import styles from "./homepage.module.css";
-
-const WssChat = React.lazy(() => import("chat_app/Chat"));
 
 const Home = () => {
   return (
@@ -13,11 +10,7 @@ const Home = () => {
           <li>item 1</li>
           <li>item 1</li>
           <li>item 1</li>
-          <li>
-            <Suspense fallback={<div>Loading . . .</div>}>
-              {WssChat ? <WssChat /> : "Empty"}
-            </Suspense>
-          </li>
+          <li>item 1</li>
         </ul>
       </div>
     </section>
