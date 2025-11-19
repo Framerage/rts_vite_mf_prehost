@@ -4,10 +4,10 @@ import {homePath} from "utils/routeConfig";
 
 const ErrorPage = () => {
   const navigate = useNavigate();
-  const [timer, setTimer] = useState(10);
+  const [timer, setTimer] = useState(5);
   useEffect(() => {
     if (timer === 0) {
-      navigate(homePath);
+      navigate(`/${homePath}`);
       return;
     }
     setTimeout(() => setTimer(timer - 1), 1000);

@@ -6,6 +6,7 @@ import {homePath} from "utils/routeConfig";
 import type {ReactElement} from "react";
 import {LoginPage} from "pages/login";
 import {PrivateRoom} from "pages/private_room";
+import {Rooms} from "pages/rooms";
 
 const ROUTES: {
   [key: string]: {
@@ -19,8 +20,8 @@ const ROUTES: {
     component: HomePage,
     index: true,
   },
-  //   rooms: {link: `${homePath}/catalog`, component: Catalog},
-  private_room: {link: `${homePath}/room/:id`, component: PrivateRoom},
+  rooms: {link: `${homePath}/rooms`, component: Rooms},
+  private_room: {link: `${homePath}/rooms/:id`, component: PrivateRoom},
   login: {link: `${homePath}/login`, component: LoginPage},
   error: {link: "*", component: ErrorPage},
 };
