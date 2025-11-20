@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import {defineConfig} from "vite";
 import react from "@vitejs/plugin-react-swc";
 import federation from "@originjs/vite-plugin-federation";
 
@@ -16,22 +16,22 @@ export default defineConfig({
     }),
   ],
 
-    resolve: {
-      //temp comment before architecture of project 
+  resolve: {
+    //temp comment before architecture of project
     alias: {
-    //   assets: "/src/assets",
-    //   api: "/src/api",
+      //   assets: "/src/assets",
+      //   api: "/src/api",
       components: "/src/components",
-    //   hooks: "/src/hooks",
-    //   helpers: "/src/helpers",
-    //   modules: "/src/modules",
+      //   hooks: "/src/hooks",
+      //   helpers: "/src/helpers",
+      //   modules: "/src/modules",
       pages: "/src/pages",
-    //   styles: "/src/styles",
-    //   store: "/src/store",
-    //   types: "/src/types",
-    //   typings: "/src/typings",
+      //   styles: "/src/styles",
+      store: "/src/store",
+      types: "/src/types",
+      //   typings: "/src/typings",
       utils: "/src/utils",
-    //   constants: "/src/constants",
+      //   constants: "/src/constants",
     },
   },
   build: {
@@ -48,7 +48,9 @@ export default defineConfig({
     cssCodeSplit: false,
   },
   base: "/rts_vite_mf_prehost",
+  // base: HOME_URL,
   server: {
+    // open: HOME_URL,
     open: "/rts_vite_mf_prehost",
     port: 3000,
     cors: false,

@@ -7,5 +7,15 @@
         padding: 8px;
         text-align: center;
         align-content: center;
+        color: #fff;
+        font-weight: 700;
+        background-color: rgb(5, 0, 19);
     }
+    .roomExtraContent{
+        background: linear-gradient(to right , rgb(5, 0, 19) 5px, rgb(0, 224, 240) );
+        min-width: 200px;
+        align-content: center;
+        padding: 4px ;
+    }
+
 }

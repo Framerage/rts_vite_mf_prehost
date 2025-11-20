@@ -2,11 +2,12 @@ import {Link, Route, Routes} from "react-router-dom";
 import styles from "./appLayout.module.css";
 import HomePage from "pages/home";
 import ErrorPage from "pages/error";
-import {homePath} from "utils/routeConfig";
 import type {ReactElement} from "react";
 import {LoginPage} from "pages/login";
 import {PrivateRoom} from "pages/private_room";
 import {Rooms} from "pages/rooms";
+import {homePath} from "utils/routeConfig";
+import {useAuthStore} from "store/authStore";
 
 const ROUTES: {
   [key: string]: {
@@ -30,6 +31,8 @@ const ROUTES: {
 //TODO: прикрутить Zustand для чего нибудь (тема)
 
 export const AppLayout = () => {
+  const user = useAuthStore(s => s.user)?.toLocaleUpperCase();
+
   return (
     <main className={styles.appWrapper}>
       <nav className={styles.appNav}>
@@ -46,7 +49,10 @@ export const AppLayout = () => {
         </ul>
       </nav>
       <div className={styles.contentWrapper}>
-        <div className={styles.contentHeader}>App header</div>
+        <div className={styles.contentHeader}>
+          <h1>App header</h1>
+          <p>{user}</p>
+        </div>
         <section className={styles.contentEntries}>
           <Routes>
             {Object.values(ROUTES).map(r => (
