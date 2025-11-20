@@ -1,0 +1,1 @@
+export const homePath=import.meta.env.VITE_APP_HOME_URL

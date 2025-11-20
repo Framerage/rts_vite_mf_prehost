@@ -10,12 +10,30 @@ export default defineConfig({
       name: "prehost_app",
       shared: ["react", "react-dom"],
       remotes: {
-        // chat_app: "http://localhost:5001/rts_wss_chat/assets/chatEntry.js",
-        chat_app: "https://framerage.github.io/rts_chat/assets/chatEntry.js",
+        // chat_app: "http://localhost:5001/rts_wss_chat/assets/chatEntry.js", //preview
+        chat_app: "https://framerage.github.io/rts_chat/assets/chatEntry.js", //github repository
       },
     }),
   ],
 
+    resolve: {
+      //temp comment before architecture of project 
+    alias: {
+    //   assets: "/src/assets",
+    //   api: "/src/api",
+      components: "/src/components",
+    //   hooks: "/src/hooks",
+    //   helpers: "/src/helpers",
+    //   modules: "/src/modules",
+      pages: "/src/pages",
+    //   styles: "/src/styles",
+    //   store: "/src/store",
+    //   types: "/src/types",
+    //   typings: "/src/typings",
+      utils: "/src/utils",
+    //   constants: "/src/constants",
+    },
+  },
   build: {
     rollupOptions: {
       output: {
