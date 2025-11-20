@@ -1,9 +1,13 @@
 import {useForm} from "react-hook-form";
 import styles from "./login.module.css";
+import {useAuthStore} from "store/authStore";
+import {useNavigate} from "react-router-dom";
+import {homePath} from "utils/routeConfig";
 interface ILoginForm {
   userName: string;
 }
 export const LoginPage = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -11,9 +15,11 @@ export const LoginPage = () => {
   } = useForm<ILoginForm>({
     defaultValues: {userName: ""},
   });
+  const {setUser} = useAuthStore(s => s.actions);
 
   const onSubmitForm = (data: ILoginForm) => {
-    console.log(data, "form data");
+    setUser(data.userName);
+    navigate(`${homePath}/rooms`);
   };
   return (
     <form className={styles.formWrapper} onSubmit={handleSubmit(onSubmitForm)}>
