@@ -9,9 +9,13 @@ export default defineConfig({
     federation({
       name: "prehost_app",
       shared: ["react", "react-dom"],
+      filename: "prehost_appEntry.js",
       remotes: {
         // chat_app: "http://localhost:5001/rts_wss_chat/assets/chatEntry.js", //preview
         chat_app: "https://framerage.github.io/rts_chat/assets/chatEntry.js", //github repository
+      },
+      exposes: {
+        "./store/authStore": "./src/store/authStore.ts",
       },
     }),
   ],
