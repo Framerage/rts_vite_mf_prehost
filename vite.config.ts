@@ -15,7 +15,7 @@ export default defineConfig({
         chat_app: "https://framerage.github.io/rts_chat/assets/chatEntry.js", //github repository
       },
       exposes: {
-        "./store/authStore": "./src/store/authStore.ts",
+        "./store/useAuthStateSelector": "./src/store/hooks.ts",
       },
     }),
   ],
