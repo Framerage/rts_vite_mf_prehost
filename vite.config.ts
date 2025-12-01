@@ -57,6 +57,12 @@ export default defineConfig({
     // open: HOME_URL,
     open: "/rts_vite_mf_prehost",
     port: 3000,
+    cors: true,
+    origin: "http://localhost:5005/rts_chat",
+  },
+  preview: {
+    open: "/rts_vite_mf_prehost",
+    port: 5001,
     cors: false,
   },
 });
