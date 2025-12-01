@@ -7,7 +7,7 @@ import {LoginPage} from "pages/login";
 import {PrivateRoom} from "pages/private_room";
 import {Rooms} from "pages/rooms";
 import {homePath} from "utils/routeConfig";
-import {authStore} from "store/authStore";
+import {useAuthStore} from "store/authStore";
 
 const ROUTES: {
   [key: string]: {
@@ -31,7 +31,7 @@ const ROUTES: {
 //TODO: прикрутить Zustand для чего нибудь (тема)
 
 export const AppLayout = () => {
-  const user = authStore(s => s.user)?.toLocaleUpperCase();
+  const user = useAuthStore(s => s.user)?.toLocaleUpperCase();
 
   return (
     <main className={styles.appWrapper}>

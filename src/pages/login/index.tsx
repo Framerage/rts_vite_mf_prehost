@@ -1,6 +1,6 @@
 import {useForm} from "react-hook-form";
 import styles from "./login.module.css";
-import {authStore} from "store/authStore";
+import {useAuthStore} from "store/authStore";
 import {useNavigate} from "react-router-dom";
 import {homePath} from "utils/routeConfig";
 interface ILoginForm {
@@ -15,7 +15,7 @@ export const LoginPage = () => {
   } = useForm<ILoginForm>({
     defaultValues: {userName: ""},
   });
-  const {setUser} = authStore(s => s.actions);
+  const {setUser} = useAuthStore(s => s.actions);
 
   const onSubmitForm = (data: ILoginForm) => {
     setUser(data.userName);
