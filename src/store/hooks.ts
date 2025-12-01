@@ -1,3 +1,3 @@
-import {useAuthStore} from "./authStore";
+import {authStore} from "./authStore";
 
-export const useAuthStateSelector = () => useAuthStore().user;
+export const useAuthStateSelector = authStore().user;

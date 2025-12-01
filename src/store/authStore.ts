@@ -12,7 +12,7 @@ const defaultAuthStore: IAuthStore = {
   user: null,
 };
 
-export const useAuthStore = create<IAuthState>()(set => ({
+export const authStore = create<IAuthState>()(set => ({
   ...defaultAuthStore,
   actions: {
     setUser: loginValue => set(state => ({...state, user: loginValue})),
