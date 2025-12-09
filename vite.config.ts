@@ -13,6 +13,8 @@ export default defineConfig({
       remotes: {
         // chat_app: "http://localhost:5001/rts_wss_chat/assets/chatEntry.js", //preview
         chat_app: "https://framerage.github.io/rts_chat/assets/chatEntry.js", //github repository
+        child_main_page:
+          "https://framerage.github.io/rts_vue_mf_extra/assets/chatEntry.js", //gh rep
       },
       exposes: {
         "./store/useAuthStateSelector": "./src/store/hooks.ts",
