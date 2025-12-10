@@ -1,9 +1,23 @@
-import {lazy, Suspense} from "react";
+import {Suspense, useEffect, useRef} from "react";
 import styles from "./homepage.module.css";
 import DotLoader from "components/dotLoader";
 import {ErrorBoundary} from "react-error-boundary";
 import {FailedLoadContent} from "components/failedLoadContent";
-const VueMainPage = lazy(() => import("child_main_page/SharedMainPage"));
+// const VueMainPage = lazy(() => import("child_main_page/SharedMainPage"));
+import SharedMainPage from "child_main_page/SharedMainPage";
+import {createApp} from "child_main_page/vue";
+const VueComponentWrapper = () => {
+  const divRef = useRef(null);
+  useEffect(() => {
+    const component = createApp(SharedMainPage);
+    component.mount(divRef.current);
+    return () => {
+      component.unmount();
+    };
+  });
+
+  return <div ref={divRef}></div>;
+};
 const Home = () => {
   console.log("render home");
   return (
@@ -19,7 +33,7 @@ const Home = () => {
       </div>
       <ErrorBoundary fallback={<FailedLoadContent />}>
         <Suspense fallback={<div> vue is loading ... </div>}>
-          <VueMainPage msg="test render" />
+          <VueComponentWrapper />
         </Suspense>
       </ErrorBoundary>
     </section>

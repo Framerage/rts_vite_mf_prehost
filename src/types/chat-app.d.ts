@@ -3,7 +3,17 @@ declare module "chat_app/Chat" {
   export default Chat;
 }
 
+// declare module "child_main_page/SharedMainPage" {
+//   const SharedMainPage: React.FC<{msg: string}>;
+//   export default SharedMainPage;
+// }
+
 declare module "child_main_page/SharedMainPage" {
-  const SharedMainPage: React.FC<{msg: string}>;
+  import type {DefineComponent} from "vue";
+  const SharedMainPage: DefineComponent<object, object, {msg: string}>;
   export default SharedMainPage;
+}
+
+declare module "child_main_page/vue" {
+  export {createApp} from "vue";
 }
