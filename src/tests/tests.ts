@@ -1,8 +1,6 @@
-// Реализуй функцию, которая находит самое часто встречающееся значение в массиве.
 // Напиши функцию, которая группирует массив объектов по значению указанного ключа.
 // Реализуй функцию flatten, которая превращает вложенный массив в плоский (с возможностью указания глубины).
-// Реализуй простую функцию debounce(fn, delay), которая ограничивает частоту вызовов функции.
-// Реализуй функцию throttle(fn, delay).
+
 // Реализуй функцию, которая возвращает сумму при множественных вызовах: sum(1)(2)(3) == 6.
 // Напиши свой вариант Function.prototype.bind — с поддержкой передачи контекста и частичных аргументов.
 // Реализуй функцию deepClone, которая делает глубокую копию объекта.
@@ -91,4 +89,41 @@ const getUnicArr = (arr: any[]) => {
   const testObj: {[key: string]: string} = {};
   arr.forEach(el => (testObj[el] = ""));
   return Object.keys(testObj);
+};
+
+// 22.12
+// Реализуй функцию, которая находит самое часто встречающееся значение в массиве.
+const findNeo = arr => {
+  const testObj = {};
+  arr.forEach(el => {
+    const key = String(el);
+    testObj[key] ? testObj[key]++ : (testObj[key] = 1);
+  });
+  const result = Object.entries(testObj).sort((a, b) => b[1] - a[1]);
+
+  return result[0][0];
+};
+
+// Реализуй простую функцию debounce(fn, delay), которая ограничивает частоту вызовов функции.
+const debounce = (fn, delay) => {
+  const timer = setTimeout(() => {
+    fn();
+    clearTimeout(timer);
+  }, delay);
+};
+
+// Реализуй функцию throttle(fn, delay).
+const throttle = (fn: () => void, delay: number) => {
+  let isThrottle = false,
+    lastUpdate = 0;
+
+  return () => {
+    const currentTime = Date.now();
+    if (!isThrottle && currentTime - lastUpdate >= delay) {
+      fn();
+      lastUpdate = currentTime;
+      isThrottle = true;
+      setTimeout(() => (isThrottle = false), delay);
+    }
+  };
 };
