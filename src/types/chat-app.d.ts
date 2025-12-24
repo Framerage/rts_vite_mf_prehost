@@ -9,8 +9,7 @@ declare module "chat_app/Chat" {
 // }
 
 declare module "child_main_page/SharedMainPage" {
-  import type {DefineComponent} from "vue";
-  const SharedMainPage: DefineComponent<object, object, {msg: string}>;
+  const SharedMainPage;
   export default SharedMainPage;
 }
 
