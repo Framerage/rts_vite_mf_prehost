@@ -45,11 +45,17 @@ export const TestForm = () => {
     [nameRef, descripRef],
   );
 
-  const onCloseModal = () => setIsOpen(false);
+  const onCallModal = useCallback(() => {
+    if (isOpen) {
+      setIsOpen(false);
+      return;
+    }
+    setIsOpen(true);
+  }, [isOpen]);
   useEffect(() => {
     const escListener = (e: KeyboardEvent) => {
       if (e?.keyCode === 27) {
-        onCloseModal();
+        onCallModal();
       }
     };
     window.addEventListener("keydown", escListener);
@@ -58,7 +64,7 @@ export const TestForm = () => {
     };
   }, []);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  useClickOutside<HTMLDialogElement>(formRef as any, onCloseModal);
+  useClickOutside<HTMLDialogElement>(formRef as any, onCallModal);
   return (
     <div
       style={{
@@ -66,7 +72,7 @@ export const TestForm = () => {
         height: "600px",
       }}
     >
-      <button onClick={() => setIsOpen(prev => !prev)}>Open</button>
+      <button>Open</button>
       <dialog open={isOpen} ref={formRef}>
         <form
           action="#"
