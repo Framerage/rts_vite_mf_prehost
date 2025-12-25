@@ -37,6 +37,7 @@ export default defineConfig({
       types: "/src/types",
       //   typings: "/src/typings",
       utils: "/src/utils",
+      tests: "/src/tests",
       //   constants: "/src/constants",
     },
   },

@@ -8,6 +8,7 @@ import {PrivateRoom} from "pages/private_room";
 import {Rooms} from "pages/rooms";
 import {homePath} from "utils/routeConfig";
 import {useAuthStore} from "store/authStore";
+import {TestForm} from "tests/Testform";
 
 const ROUTES: {
   [key: string]: {
@@ -64,6 +65,7 @@ export const AppLayout = () => {
               />
             ))}
           </Routes>
+          <TestForm />
         </section>
       </div>
     </main>
