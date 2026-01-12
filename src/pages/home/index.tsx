@@ -1,11 +1,12 @@
-import {Suspense} from "react";
+// import {Suspense} from "react";
 import styles from "./homepage.module.css";
 import DotLoader from "components/dotLoader";
-import {ErrorBoundary} from "react-error-boundary";
-import {FailedLoadContent} from "components/failedLoadContent";
+// import {ErrorBoundary} from "react-error-boundary";
+// import {FailedLoadContent} from "components/failedLoadContent";
 // const VueMainPage = lazy(() => import("child_main_page/SharedMainPage"));
 // const SharedMainPage = lazy(() => import("child_main_page/SharedMainPage"));
 import SharedMainPage from "child_main_page/SharedMainPage";
+import {TestUsersTable} from "tests/TestUsersTable";
 // await import {createApp} from "child_main_page/vue";
 // const fetchVue = async () => (await import("child_main_page/vue")).default;
 // const vue = await fetchVue();
@@ -35,11 +36,14 @@ const Home = () => {
         />
       </div>
       <h3>this is vue component &#8595;</h3>
-      <ErrorBoundary fallback={<FailedLoadContent />}>
+      {/* <ErrorBoundary fallback={<FailedLoadContent />}>
         <Suspense fallback={<div> vue is loading ... </div>}>
           <SharedMainPage />
         </Suspense>
-      </ErrorBoundary>
+      </ErrorBoundary> */}
+
+      {/* <TestForm /> */}
+      <TestUsersTable />
     </section>
   );
 };

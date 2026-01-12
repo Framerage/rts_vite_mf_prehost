@@ -2,12 +2,11 @@
 // Реализуй функцию flatten, которая превращает вложенный массив в плоский (с возможностью указания глубины).
 
 // Напиши свой вариант Function.prototype.bind — с поддержкой передачи контекста и частичных аргументов.
-// Реализуй функцию deepClone, которая делает глубокую копию объекта.
 // Реализуй простую версию EventEmitter с методами on, off и emit.
 // Объясни порядок вывода в консоль для кода с промисами и setTimeout — в браузере и в Node.js.
 // Реализуй функцию memoize(fn), которая кеширует результаты вызовов.
 // Реализуй функцию compose или pipe, которая объединяет несколько функций в одну.
-// Реализуй функцию для глубокого сравнения двух объектов (deepEqual).
+
 // Реализуй LRU-кеш фиксированного размера с методами get и set.
 // Реализуй функцию, которая делает retry вызова асинхронной функции заданное количество раз при ошибке.
 // Реализуй простейшую версию fetch с таймаутом (например, timeoutFetch(url, ms)).
@@ -16,8 +15,7 @@
 // Реализуй функцию limitConcurrency(tasks, limit), которая выполняет задачи с ограничением числа параллельных промисов.
 // Реализуй собственную реализацию функции reduce.
 // Напиши собственную реализацию Promise.allSettled.
-// В TypeScript: реализуй утилиту DeepReadonly<T>, делающую все поля рекурсивно readonly.
-// В TypeScript: реализуй тип, который из строки "/user/:id/post/:postId" извлекает тип { id: string; postId: string }.
+
 // Реализуй функцию, которая объединяет несколько отсортированных асинхронных итераторов (AsyncIterator) в один общий поток, сохранив порядок.
 // Реализуй упрощённую версию собственного Promise (с поддержкой then, catch и finally)
 
@@ -141,4 +139,54 @@
 //   //   return (s: number) => {
 //   //   return sum(arg + s);
 //   // };
-// }
+// }]
+
+// 30.01
+// В TypeScript: реализуй утилиту DeepReadonly<T>, делающую все поля рекурсивно readonly.
+// export type DeepReadonly<T> = {
+//   readonly [P in keyof T]: T[P];
+// };
+
+// // В TypeScript: реализуй тип, который из строки "/user/:id/post/:postId" извлекает тип { id: string; postId: string }.
+// type Url = "/user/:id/post/:postId";
+
+// const createNewType = (str: string) => {
+//   const NeededKeys = str
+//     .split("/")
+//     .filter(el => el.includes(":"))
+//     .map(el => el.replace(":", ""));
+//   type ResultStr = (typeof NeededKeys)[number];
+//   type Result = Record<ResultStr, string>;
+// };
+// export const testGeneric = <T>(arg: T): T => {
+//   return arg;
+// };
+// 12.01
+// Реализуй функцию deepClone, которая делает глубокую копию объекта.
+// export const deepClone = (obj1: object, obj2: object) => {
+//   // return {...obj2,...obj1}
+//   const obj1Entries = Object.entries(obj1);
+//   obj1Entries.forEach(elem => {
+//     obj2[elem[0]] = elem[1];
+//   });
+//   return obj2;
+// };
+
+// // Реализуй функцию для глубокого сравнения двух объектов (deepEqual).
+// export const deepEqual = (obj1: object, obj2: object) => {
+//   if (Object.is(obj1, obj2)) {
+//     return true;
+//   }
+//   const obj1Keys = Object.keys(obj1);
+//   const obj2Keys = Object.keys(obj2);
+
+//   if (obj1Keys.length !== obj2Keys.length) {
+//     return false;
+//   }
+//   const isAnyKeyExist = obj1Keys.every(key => obj2Keys.includes(key));
+//   if (!isAnyKeyExist) {
+//     return false;
+//   }
+//   const isEveryKeyValueEqual = obj1Keys.every(key => obj1[key] === obj2[key]);
+//   return isEveryKeyValueEqual;
+// };
