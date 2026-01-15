@@ -112,7 +112,7 @@ const ItemField = memo(
     const [currentValue, setCurrentValue] = useState(() => value);
     const debouncedValue = useDebounce(currentValue, 500).current;
 
-    console.log("render item filed");
+    // console.log("render item filed");
     useEffect(() => {
       onChangeValue(debouncedValue, itemKey);
     }, [debouncedValue]);
@@ -146,7 +146,7 @@ const ListItem: FC<IPropsItem> = ({item, handleChangeItem}) => {
     },
     [id],
   );
-  console.log("render list item", id);
+  // console.log("render list item", id);
   return (
     <li
       style={{
@@ -184,7 +184,7 @@ export const TestUsersTable = () => {
   const [initialList, setInitialList] = useState(() => list);
   const sortedList = useSortedList(currentSortKey, sortCondition, initialList);
 
-  console.log("render table");
+  // console.log("render table");
   const onChangeSortCondition = () => {
     setSortCondition(prev => {
       if (prev === SortABC.ABC) {
