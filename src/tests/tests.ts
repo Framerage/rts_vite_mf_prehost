@@ -1,10 +1,6 @@
-// Напиши функцию, которая группирует массив объектов по значению указанного ключа.
-// Реализуй функцию flatten, которая превращает вложенный массив в плоский (с возможностью указания глубины).
-
 // Напиши свой вариант Function.prototype.bind — с поддержкой передачи контекста и частичных аргументов.
 // Реализуй простую версию EventEmitter с методами on, off и emit.
-// Объясни порядок вывода в консоль для кода с промисами и setTimeout — в браузере и в Node.js.
-// Реализуй функцию memoize(fn), которая кеширует результаты вызовов.
+
 // Реализуй функцию compose или pipe, которая объединяет несколько функций в одну.
 
 // Реализуй LRU-кеш фиксированного размера с методами get и set.
@@ -167,10 +163,28 @@
 //   // return {...obj2,...obj1}
 //   const obj1Entries = Object.entries(obj1);
 //   obj1Entries.forEach(elem => {
-//     obj2[elem[0]] = elem[1];
+//     if (Array.isArray(elem[1])) {
+//       obj2[elem[0]] = deepClone(elem[1], []);
+//     } else if (typeof elem[1] === "object" && elem[1]) {
+//       obj2[elem[0]] = deepClone(elem[1], {});
+//     } else {
+//       obj2[elem[0]] = elem[1];
+//     }
 //   });
 //   return obj2;
 // };
+//** */
+//     if (typeof obj !== 'object' || obj === null) {
+//     return obj; // Возвращаем примитивы и null
+//   }
+//   let copy = Array.isArray(obj) ? [] : {}; // Создаем новый массив или объект
+//   for (let key in obj) {
+//     if (obj.hasOwnProperty(key)) {
+//       copy[key] = deepCopy(obj[key]); // Рекурсивно копируем вложенные значения
+//     }
+//   }
+//   return copy;
+//** */
 
 // // Реализуй функцию для глубокого сравнения двух объектов (deepEqual).
 // export const deepEqual = (obj1: object, obj2: object) => {
@@ -229,3 +243,143 @@
 // console.log(nextBigger(99999));
 
 //codewars
+
+// 19.01
+// Напиши функцию, которая группирует массив объектов по значению указанного ключа.
+// const groupArr = <T>(arr: T[], key: keyof T) => {
+//   const resultGroups = {};
+
+//   arr.forEach(el => {
+//     const keyGroupValue = el[key];
+//     if (resultGroups.hasOwnProperty(keyGroupValue as string)) {
+//       resultGroups[keyGroupValue as string].push(el);
+//     } else {
+//       resultGroups[keyGroupValue] = [el];
+//     }
+//   });
+//   return resultGroups;
+// };
+
+// 20.01
+// Реализуй функцию flatten, которая превращает вложенный массив в плоский (с возможностью указания глубины).
+export const flatten = (arr: any[], depth = 1) => {
+  let depthStep = 0;
+  const resultArr = [];
+
+  const checkElemByArray = (array: any[]) => {
+    array.forEach(el => {
+      if (Array.isArray(el) && depthStep < depth) {
+        depthStep++;
+        checkElemByArray(el);
+      } else {
+        resultArr.push(el);
+      }
+    });
+  };
+  checkElemByArray(arr);
+  return resultArr;
+};
+
+// Реализуй функцию memoize(fn), которая кеширует результаты вызовов.
+export const memoize = (fn: Function) => {
+  const mapCache = new Map();
+  const weakCache = new WeakMap();
+
+  return function (...args) {
+    let isAnyArgObj = false,
+      isAnyArgNull = false,
+      isAnyArgNaN = false,
+      isAllArgsPrimitive = true;
+
+    const argsLikeAKey = [];
+    const objectsArgs = [];
+    args.forEach(el => {
+      if (typeof el === "object") {
+        if (el) {
+          objectsArgs.push(el);
+        } else {
+          isAnyArgNull = true;
+        }
+        isAnyArgObj = true;
+        isAllArgsPrimitive = false;
+      } else if (el !== el && typeof el === "number") {
+        isAnyArgNaN = true;
+        isAllArgsPrimitive = false;
+      } else {
+        argsLikeAKey.push(el);
+      }
+    });
+    const resultCache = new Map(),
+      resultWeakCache = new Map();
+
+    if (isAnyArgObj && !isAnyArgNull) {
+      objectsArgs.forEach(key => {
+        if (!weakCache.has(key)) {
+          weakCache.set(key, new Map());
+        }
+        resultWeakCache.set("result", weakCache.get(key));
+      });
+      if (isAnyArgNaN) {
+        args.forEach(arg => arg === arg && argsLikeAKey.push(arg));
+        argsLikeAKey.forEach(key => {
+          if (!mapCache.has(key)) {
+            mapCache.set(key, new Map());
+          }
+          resultCache.set("result", mapCache.get(key));
+        });
+      } else {
+        args.forEach(key => {
+          if (!mapCache.has(key)) {
+            mapCache.set(key, new Map());
+          }
+          resultCache.set("result", mapCache.get(key));
+        });
+      }
+    } else if (!isAllArgsPrimitive && isAnyArgNaN) {
+      args.forEach(arg => arg === arg && argsLikeAKey.push(arg));
+      argsLikeAKey.forEach(key => {
+        if (!mapCache.has(key)) {
+          mapCache.set(key, new Map());
+        }
+        resultCache.set("result", mapCache.get(key));
+      });
+    } else {
+      args.forEach(key => {
+        if (!mapCache.has(key)) {
+          mapCache.set(key, new Map());
+        }
+        resultCache.set("result", mapCache.get(key));
+      });
+    }
+    if (resultCache.has("result")) {
+      return resultCache.get("result");
+    } else if (resultWeakCache.has("result")) {
+      return resultWeakCache.get("result");
+    } else {
+      const result = fn(...args);
+      resultCache.set("result", result);
+      return result;
+    }
+  };
+  // example
+  //       const cache = new Map();
+
+  //   return function (...args) {
+  //     let node = cache;
+
+  //     for (const arg of args) {
+  //       if (!node.has(arg)) {
+  //         node.set(arg, new Map());
+  //       }
+  //       node = node.get(arg);
+  //     }
+
+  //     if (node.has('result')) {
+  //       return node.get('result');
+  //     }
+
+  //     const result = fn.apply(this, args);
+  //     node.set('result', result);
+  //     return result;
+  //   };
+};

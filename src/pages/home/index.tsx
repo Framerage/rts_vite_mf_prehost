@@ -23,6 +23,16 @@ import {TestAuthForm} from "tests/TestAuthForm";
 
 //   return <div ref={divRef}></div>;
 // };
+// type A={
+//   a:string,
+//   b:string,
+// }
+// type B={
+//   a:string,
+//   b:string,
+//   c:string
+// }
+// type C=Exclude<A,B >
 
 const Home = () => {
   // console.log("render home", SharedMainPage);
