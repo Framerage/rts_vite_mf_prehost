@@ -1,7 +1,6 @@
 // import {Suspense} from "react";
 import styles from "./homepage.module.css";
 import DotLoader from "components/dotLoader";
-import {TestAuthForm} from "tests/TestAuthForm";
 // import {ErrorBoundary} from "react-error-boundary";
 // import {FailedLoadContent} from "components/failedLoadContent";
 // const VueMainPage = lazy(() => import("child_main_page/SharedMainPage"));
@@ -53,10 +52,6 @@ const Home = () => {
           <SharedMainPage />
         </Suspense>
       </ErrorBoundary> */}
-
-      {/* <TestForm /> */}
-      {/* <TestUsersTable /> */}
-      <TestAuthForm />
     </section>
   );
 };
